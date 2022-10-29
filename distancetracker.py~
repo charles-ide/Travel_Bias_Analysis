@@ -1,0 +1,7 @@
+
+
+
+def tracker():
+    with open('celtics1617.csv','rb') as handle:
+        print(handle[0])
+    

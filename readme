@@ -1,0 +1,30 @@
+Final Project Folder for CS135, Spring 2017.
+[Student: please keep this file up-to-date.  Your grade depends on
+ our ability to understand what your project has accomplished and
+ how the software is used.]
+
+Student Name: Charlie Ide
+Project Title: Basketball Travel & Win Probability
+
+1. Describe (briefly) the files and folders found in this project.
+   README - this file, an overview of the project
+   Contract.pdf - project proposal
+   1314elo.csv - Elo data from the 13-14 NBA season.
+   All the team csv files - 13-14 NBA schedules for each NBA team
+   distancepuller.py - a utility I used to generate a dictionary of distances between each NBA team using regular expressions and a web application.
+   distances.pickle - A pickled dictionary of dictionaries that contains the distances between any two NBA teams.
+   distancetracker.py -  A series of utilities I used to analyze the csv schedules that tracked how far an NBA team has traveled in the past week.
+   eloanalysis.py - A module of functions that took travel data from the distance tracker module and read base elo data from the elo csv, and produced adjusted elo ratings and win probabilities for a game.
+   seasontotals.py - Contains modules that iterate over the entire season for each team to examine how many wins a team gained or lost over the entire season due to travel schedules.
+   seasontotals.pickle - A pickled dictionary containing each team and how many wins the team gained or lost over the course of the season due to travel schedules.
+
+2. Additional modules (beyond python3, pillow, matplotlib, requests)
+   required by this software: csv, regular expressions, pickle, time
+
+3. Demonstrable accomplishments of this project: The Elo Adjuster module contains the winprob function that can take any NBA team and a game number from the 2013-2014 NBA season, and then read and adjust each team’s Elo rating based on miles traveled in the past week, home court advantage, and whether the team played the previous night and calculate a team’s win probability based on these adjusted Elo ratings. I also looked at the entire season for each team and examined how many wins each team gained or lost over the course of the entire season due to their travel schedule by examining the change in win probability due to travel adjustments, and adding up all these changes over the course of the season. You can use the seasonanalysis function from the seasontotals module to see how many wins a team gained or lost over the course of the season due to the travel schedule, or you can load up the seasontotals.pickle database to view how many wins each team gained or lost over the course of the season.
+
+
+4. Documentation of how CS135 staff would use your software to produce the
+   results: Import the winprob function from eloanalysis and then enter two arguments the first being a game number 1-82, and the second being the name of an NBA team capitalized and in string form such as ‘Celtics’ or ‘Bucks’. It would look like this: winprob(50,’Celtics’) to view the Celtics win probability for their 50th game of the season. The Philadelphia 76ers must be written as the ‘Sixers’. This will yield the team’s win probability for the game as well as info about the team’s elo. Import seasonanalysis function from season total module and type in a team name as (‘Celtics’ or ‘Bucks’) to see how many wins a team gained or lost over the course of a season due to travel schedule. Load up the pickled database if you would like to view how many wins each team gained or lost due to its travel schedule.
+
+5. Additional comments: The adjustments that I made to elo are as follows: +92 points for home court advantage, -46 points if the team played a game the previous night (fatigue adjustment), -6 points per 1000 miles traveled in the past week (travel adjustment). These numbers are based off findings from 538 regarding home court advantage and fatigue effects on play. Originally this project had the narrow focus of looking at individual games and finding the win probability, however I expanded the focus once I had the machinery in place to discover how fair team’s travel schedules are by looking at how many wins a team gains or loses over the course of a season if travel and fatigue adjustments are factored in compared to if they aren’t. A team gained wins if their opponent lost more Elo points due to their recent travel schedule than they did.

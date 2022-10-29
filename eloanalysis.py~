@@ -1,0 +1,23 @@
+# (c) 2017 Charlie Ide
+# This file contains modules that I will use to analyze the file containing Elo data
+
+import distancetracker
+import csv
+import pickle
+
+def elowin(elo1, elo2):
+    '''This function calculates win probability in a game given the elo ratings
+    of two teams, using a standard formula from chess.'''
+    m=(elo1-elo2)/400
+    prob=1-(1/(1+(10**m)))
+    return prob
+
+def eloreader():
+    db=distancetracker.readDB('1314elo.csv')
+    print(db)
+
+def eloadjuster(team, game):
+    elo=placeholder #pull elo from file
+
+def winprob(team, game):
+    pass #takes adjusted elo of both teams and yields win probability
